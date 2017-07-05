@@ -30,18 +30,33 @@ class App extends Component {
     });
   }
 
+// TODO: Clean up code / rename
   getData(input) {
     const url = `https://swapi.co/api/${input}/`;
-    return fetch(url)
-    .then(response => response.json())
-    .then(data => {
 
-      const personData = data.results.map(e => fetch(e.homeworld));
-      console.log(personData);
+    fetch(url)
+    .then(response => response.json())
+    .then(peopleData => {
+      const personData = peopleData.results.map(e => fetch(e.homeworld));
       Promise.all(personData)
-             .then(response => response[0].json())
-             .then(data => console.log(data));
+        .then(response => {
+          return Promise.all(response.map(e => e.json()))
+         })
+         .then(homeworld => {
+          const arr = peopleData.results.map((e, i) => {
+            e.homeworld = homeworld[i]
+            return e;
+          })
+
+           this.setState({
+             people: {
+               peopleData: arr,
+               homeworld,
+             }
+           });
+         });
     });
+
   }
 
 
