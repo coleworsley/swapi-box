@@ -1,13 +1,14 @@
 import React from 'react';
 import './Card.css';
 
-const Card = () => {
+const Card = ({data}) => {
+  console.log(data)
   return (
     <div>
-      <h3>Name</h3>
-      <p>Homeworld</p>
-      <p>Species</p>
-      <p>Population of Homeworld</p>
+      <h3>{data.name}</h3>
+      <p>{data.homeworld.name}</p>
+      <p>Language</p>
+      <p>{data.homeworld.population}</p>
       <button>Favorite</button>
     </div>
   )

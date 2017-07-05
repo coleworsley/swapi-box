@@ -1,11 +1,15 @@
 import React from 'react';
 import Card from '../Card/Card';
 
-const CardContainer = () => {
+const CardContainer = ({cardData}) => {
+  console.log(cardData)
+const cards = cardData.peopleData ? cardData.peopleData.map(e => {
+  return <Card data={e}/>
+}) : null
 
   return (
     <section>
-      <Card />
+      {cards}
     </section>
   )
 }

@@ -13,6 +13,7 @@ class App extends Component {
       people: {},
       planets: {},
       vehicles: {},
+      active: 'people',
     }
   }
 
@@ -32,7 +33,9 @@ class App extends Component {
 
 // TODO: Clean up code / rename
   getData(input) {
+    input = input.target.textContent.toLowerCase()
     const url = `https://swapi.co/api/${input}/`;
+    this.toggleActive(input)
 
     fetch(url)
     .then(response => response.json())
@@ -59,15 +62,19 @@ class App extends Component {
 
   }
 
+  toggleActive(tab) {
+    this.setState({active: tab})
+  }
 
 
   render() {
+    const cardData = this.state.active
     return (
       <div className="app">
         <Sidebar films={this.state.films}/>
         <main>
           <Nav getData={this.getData.bind(this)}/>
-          <CardContainer/>
+          <CardContainer cardData={this.state[cardData]}/>
         </main>
       </div>
     );
