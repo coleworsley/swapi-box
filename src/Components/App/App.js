@@ -32,15 +32,18 @@ class App extends Component {
 
   getData(input) {
     const url = `https://swapi.co/api/${input}/`;
-    console.log(input);
-    fetch(url)
+    return fetch(url)
     .then(response => response.json())
     .then(data => {
-      this.setState({
-        [input]: data
-      })
-    })
+
+      const personData = data.results.map(e => fetch(e.homeworld));
+      console.log(personData);
+      Promise.all(personData)
+             .then(response => response[0].json())
+             .then(data => console.log(data));
+    });
   }
+
 
 
   render() {
