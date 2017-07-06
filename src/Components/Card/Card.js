@@ -18,10 +18,26 @@ const Card = ({ data }) => {
   //   )
 
   switch(element) {
-    case element.construct === Array:
-      return element.map(item => <p>{item}</p>);
-    case === 'name':
-    case === 'favorite':
+    case 'residents':
+    console.log("working")
+    console.log(data[element])
+      return (
+        <div>
+          <p>Residents</p>
+          {
+            data[element].map((item, index )=> {
+              return (
+                <p>{item}</p>
+              )
+            })
+          }
+        </div>
+
+      )
+
+
+    case 'name':
+    case 'favorite':
       return null;
     default:
       return  <p>{element}: {data[element]}</p>
@@ -33,7 +49,9 @@ const Card = ({ data }) => {
 
   return (
     <div>
+      <h3>{data.name}</h3>
       {cardInfo}
+      <button>FAVORITEASS</button>
     </div>
   )
 }

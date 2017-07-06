@@ -7,9 +7,9 @@ const Nav = ({getData}) => {
   return (
     <nav>
       <button onClick={(e) => getData(e)}>People</button>
-      <button onClick={() => getData()}>Planets</button>
-      <button onClick={() => getData()}>Vehicles</button>
-      <button onClick={() => getData()}>Favorites</button>
+      <button onClick={(e) => getData(e)}>Planets</button>
+      <button onClick={(e) => getData(e)}>Vehicles</button>
+      <button onClick={(e) => getData(e)}>Favorites</button>
     </nav>
   )
 }

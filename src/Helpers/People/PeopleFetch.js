@@ -9,7 +9,7 @@ export default class PeopleFetch {
     fetch(this.url)
       .then(response => response.json())
       .then(people => this.getNestedData(people))
-      .then(people => component.setState({ people }))
+      .then(people => component.setState({ people, active: "people" }))
   }
 
   getNestedData(people) {

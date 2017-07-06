@@ -11,7 +11,7 @@ export default class VehicleFetch {
 
         return new Vehicle(element)
       })).then(vehicleArray => {
-        component.setState({vehicles: vehicleArray})
+        component.setState({vehicles: vehicleArray, active: "vehicles"})
       })
   }
 

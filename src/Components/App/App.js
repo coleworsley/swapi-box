@@ -16,23 +16,28 @@ class App extends Component {
       people: {},
       planets: {},
       vehicles: {},
-      active: 'people',
+      active: 'planets',
     }
-  }
-
-  componentDidMount() {
-
   }
 
 // TODO: Clean up code / rename
   getData(input) {
-    const apiCall = new PeopleFetch();
-    apiCall.getPeople(this)
-    // const apiCall = new VehiclesFetch();
-    // apiCall.getVehicles(this)
-
-
-
+    switch(input.target.textContent) {
+      case 'Planets':
+        var apiCall = new PlanetsFetch();
+        apiCall.getPlanets(this)
+        break;
+      case 'People':
+        var apiCall = new PeopleFetch();
+        apiCall.getPeople(this)
+        break;
+      case 'Vehicles':
+        var apiCall = new VehiclesFetch();
+        apiCall.getVehicles(this)
+        break;
+      default:
+        break;
+    }
   }
 
   toggleActive(tab) {
