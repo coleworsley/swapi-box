@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Sidebar from '../Sidebar/Sidebar'
 import CardContainer from '../CardContainer/CardContainer'
 import Nav from '../Nav/Nav'
+import PeopleFetch from '../../Helpers/People/PeopleFetch';
 
 
 class App extends Component {
@@ -33,38 +34,42 @@ class App extends Component {
 
 // TODO: Clean up code / rename
   getData(input) {
-    input = input.target.textContent.toLowerCase();
+    const apiCall = new PeopleFetch(this);
+    apiCall.getPeople()
 
-    // switch input to preset fields;
-    const url = `https://swapi.co/api/${input}/`;
-    this.toggleActive(input)
 
-    fetch(url)
-    .then(response => response.json())
-    .then(peopleData => {
-
-      const homeworldData = peopleData.results.map(e => fetch(e.homeworld));
-      const speciesData = peopleData.results.map(e => fetch(e.species));
-
-      Promise.all([...homeworldData, ...speciesData])
-        .then(response => {
-          return Promise.all(response.map(e => e.json()));
-        })
-       .then(data => {
-
-        const arr = peopleData.results.map((e, i) => {
-          e.homeworld = data[i];
-
-          e.species = data[i + peopleData.results.length];
-          return e;
-        })
-
-         this.setState({
-             people: arr,
-
-          });
-        });
-    });
+    // input = input.target.textContent.toLowerCase();
+    //
+    // // switch input to preset fields;
+    // const url = `https://swapi.co/api/${input}/`;
+    // this.toggleActive(input)
+    //
+    // fetch(url)
+    // .then(response => response.json())
+    // .then(peopleData => {
+    //
+    //   const homeworldData = peopleData.results.map(e => fetch(e.homeworld));
+    //   const speciesData = peopleData.results.map(e => fetch(e.species));
+    //
+    //   Promise.all([...homeworldData, ...speciesData])
+    //     .then(response => {
+    //       return Promise.all(response.map(e => e.json()));
+    //     })
+    //    .then(data => {
+    //
+    //     const arr = peopleData.results.map((e, i) => {
+    //       e.homeworld = data[i];
+    //
+    //       e.species = data[i + peopleData.results.length];
+    //       return e;
+    //     })
+    //
+    //      this.setState({
+    //          people: arr,
+    //
+    //       });
+    //     });
+    // });
 
   }
 
