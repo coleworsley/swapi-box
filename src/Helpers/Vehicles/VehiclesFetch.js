@@ -8,6 +8,7 @@ export default class VehicleFetch {
     fetch(this.url)
       .then(blob => blob.json())
       .then(vehicleArray => vehicleArray.results.map((element) => {
+
         return new Vehicle(element)
       })).then(vehicleArray => {
         component.setState({vehicles: vehicleArray})

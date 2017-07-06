@@ -26,10 +26,10 @@ class App extends Component {
 
 // TODO: Clean up code / rename
   getData(input) {
-    // const apiCall = new PeopleFetch();
-    // apiCall.getPeople(this)
-    const apiCall = new VehiclesFetch();
-    apiCall.getVehicles(this)
+    const apiCall = new PeopleFetch();
+    apiCall.getPeople(this)
+    // const apiCall = new VehiclesFetch();
+    // apiCall.getVehicles(this)
 
 
 
