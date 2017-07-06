@@ -33,31 +33,37 @@ class App extends Component {
 
 // TODO: Clean up code / rename
   getData(input) {
-    input = input.target.textContent.toLowerCase()
+    input = input.target.textContent.toLowerCase();
+
+    // switch input to preset fields;
     const url = `https://swapi.co/api/${input}/`;
     this.toggleActive(input)
 
     fetch(url)
     .then(response => response.json())
     .then(peopleData => {
-      const personData = peopleData.results.map(e => fetch(e.homeworld));
-      Promise.all(personData)
-        .then(response => {
-          return Promise.all(response.map(e => e.json()))
-         })
-         .then(homeworld => {
-          const arr = peopleData.results.map((e, i) => {
-            e.homeworld = homeworld[i]
-            return e;
-          })
 
-           this.setState({
-             people: {
-               peopleData: arr,
-               homeworld,
-             }
-           });
-         });
+      const homeworldData = peopleData.results.map(e => fetch(e.homeworld));
+      const speciesData = peopleData.results.map(e => fetch(e.species));
+
+      Promise.all([...homeworldData, ...speciesData])
+        .then(response => {
+          return Promise.all(response.map(e => e.json()));
+        })
+       .then(data => {
+
+        const arr = peopleData.results.map((e, i) => {
+          e.homeworld = data[i];
+
+          e.species = data[i + peopleData.results.length];
+          return e;
+        })
+
+         this.setState({
+             people: arr,
+
+          });
+        });
     });
 
   }
