@@ -21,7 +21,6 @@ export default class PlanetsFetch {
 
     return Promise.all(residents)
       .then(data => {
-
         return planets.results.map((planet, i) => {
           const resident = data[i];
           return new Planet (planet, data[i])

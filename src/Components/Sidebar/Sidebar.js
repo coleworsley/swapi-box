@@ -26,16 +26,19 @@ export default class Sidebar extends Component {
   }
 
    scrollingText() {
-    if (!this.state.films.allFilms) {
-      return "Loading"
-    }
-    return this.state.films.allFilms[this.state.filmIndex].opening_crawl;
+    const { films, filmIndex } = this.state;
+    if (!films.allFilms) return <div className='load-films'>Loading</div>
+    return (
+      <p>
+        films.allFilms[filmIndex].opening_crawl
+      </p>
+    );
   }
   render() {
     return (
-      <aside className="side-bar">
-        <h1>SWAPI-BOX</h1>
-        <div>{this.scrollingText()}</div>
+      <aside className='side-bar'>
+        <h1 className='title'>SWAPI-BOX</h1>
+        <div className='scroll'>{this.scrollingText()}</div>
       </aside>
     )
   }

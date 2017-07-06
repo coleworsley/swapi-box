@@ -7,7 +7,7 @@ const cards = cardData.length > 0 ? cardData.map(e => {
 }) : null
 
   return (
-    <section>
+    <section className='card-container'>
       {cards}
     </section>
   )

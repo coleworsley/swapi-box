@@ -20,7 +20,6 @@ class App extends Component {
     }
   }
 
-// TODO: Clean up code / rename
   getData(input) {
     switch(input.target.textContent) {
       case 'Planets':
@@ -43,7 +42,6 @@ class App extends Component {
   toggleActive(tab) {
     this.setState({active: tab})
   }
-
 
   render() {
     const cardData = this.state.active
