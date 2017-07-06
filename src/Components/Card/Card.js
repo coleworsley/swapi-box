@@ -7,7 +7,7 @@ const Card = ({data}) => {
     <div>
       <h3>{data.name}</h3>
       <p>{data.homeworld.name}</p>
-      <p>Language</p>
+      <p>{data.species.language}</p>
       <p>{data.homeworld.population}</p>
       <button>Favorite</button>
     </div>
