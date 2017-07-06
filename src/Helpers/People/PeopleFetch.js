@@ -1,15 +1,15 @@
 import Person from './Person';
 
 export default class PeopleFetch {
-  constructor(component){
-    this.component = component;
+  constructor(){
     this.url = `https://swapi.co/api/people/`;
   }
 
-  getPeople() {
+  getPeople(component) {
     fetch(this.url)
       .then(response => response.json())
       .then(people => this.getNestedData(people))
+      .then(people => component.setState({ people }))
   }
 
   getNestedData(people) {
@@ -27,14 +27,14 @@ export default class PeopleFetch {
         return people.results.map((person, i) => {
           const homeworld = data[i];
           const species = data[i + people.results.length];
-          // console.log(data);
-          return new Person(person.name, homeworld.name, species.name, species.language, homeworld.population)
+          return new Person (
+            person.name,
+            homeworld.name,
+            species.name,
+            species.language,
+            homeworld.population
+          )
         })
       })
   }
-
-  getHomeworldData(people) {
-    return people.results.map(e => fetch)
-  }
-
 }

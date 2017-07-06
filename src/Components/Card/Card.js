@@ -2,13 +2,12 @@ import React from 'react';
 import './Card.css';
 
 const Card = ({data}) => {
-  console.log(data)
   return (
     <div>
       <h3>{data.name}</h3>
-      <p>{data.homeworld.name}</p>
-      <p>{data.species.language}</p>
-      <p>{data.homeworld.population}</p>
+      <p>{data.homeworld}</p>
+      <p>{data.language}</p>
+      <p>{data.population}</p>
       <button>Favorite</button>
     </div>
   )

@@ -6,6 +6,5 @@ export default class Person {
     this.language = language;
     this.population = population;
     this.favorite = false;
-    console.log(this)
   }
 }
