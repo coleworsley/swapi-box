@@ -1,23 +1,42 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './Sidebar.css'
 
-const Sidebar = ({films}) => {
+export default class Sidebar extends Component {
+  constructor() {
+    super()
 
-  const randomNum =  Math.floor(Math.random()*( films.count ))
-
-  const scrollingText = () => {
-    if (!films.allFilms) {
-      return "Loading"
+    this.state = {
+      films: {}
     }
-    return films.allFilms[randomNum].opening_crawl;
   }
 
-  return (
-    <aside className="side-bar">
-      <h1>SWAPI-BOX</h1>
-      <div>{scrollingText()}</div>
-    </aside>
-  )
-}
+  componentDidMount() {
+    const url = 'https://swapi.co/api/films';
+    fetch(url)
+      .then(response => response.json())
+      .then(result => {
+      this.setState({
+        films: {
+          count: result.count,
+          allFilms: result.results,
+        },
+        filmIndex: Math.floor(Math.random()*( result.count ))
+      });
+    });
+  }
 
-export default Sidebar
+   scrollingText() {
+    if (!this.state.films.allFilms) {
+      return "Loading"
+    }
+    return this.state.films.allFilms[this.state.filmIndex].opening_crawl;
+  }
+  render() {
+    return (
+      <aside className="side-bar">
+        <h1>SWAPI-BOX</h1>
+        <div>{this.scrollingText()}</div>
+      </aside>
+    )
+  }
+}

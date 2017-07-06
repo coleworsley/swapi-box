@@ -5,6 +5,8 @@ import CardContainer from '../CardContainer/CardContainer'
 import Nav from '../Nav/Nav'
 import PeopleFetch from '../../Helpers/People/PeopleFetch';
 import PlanetsFetch from '../../Helpers/Planets/PlanetsFetch';
+import VehiclesFetch from '../../Helpers/Vehicles/VehiclesFetch';
+
 
 class App extends Component {
   constructor() {
@@ -19,25 +21,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const url = 'https://swapi.co/api/films';
-    fetch(url)
-    .then(response => response.json())
-    .then(result => {
-      this.setState({
-        films: {
-          count: result.count,
-          allFilms: result.results,
-        }
-      });
-    });
+
   }
 
 // TODO: Clean up code / rename
   getData(input) {
     // const apiCall = new PeopleFetch();
     // apiCall.getPeople(this)
-    const apiCall = new PlanetsFetch();
-    apiCall.getPlanets(this)
+    const apiCall = new VehiclesFetch();
+    apiCall.getVehicles(this)
 
 
 

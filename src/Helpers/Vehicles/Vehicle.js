@@ -1,9 +1,9 @@
 export default class Vehicle {
-  constructor(name, model, vehicleClass, passengers) {
-    this.name = name;
-    this.model = model;
-    this.vehicleClass = vehicleClass;
-    this.passengers = passengers;
+  constructor(vehicleObj) {
+    this.name = vehicleObj.name;
+    this.model = vehicleObj.model;
+    this.vehicleClass = vehicleObj.vehicle_class;
+    this.passengers = vehicleObj.passengers;
     this.favorite = false;
   }
 }
