@@ -1,10 +1,10 @@
-export default class Person {
-  constructor(name, homeworld, species, language, population) {
+export default class Planet {
+  constructor(name, terrain, population, climate, residents) {
     this.name = name;
-    this.homeworld = homeworld;
-    this.species = species;
-    this.language = language;
+    this.terrain = terrain;
     this.population = population;
+    this.climate = climate;
+    this.residents = residents;
     this.favorite = false;
   }
 }
