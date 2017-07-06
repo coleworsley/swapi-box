@@ -4,6 +4,7 @@ import Sidebar from '../Sidebar/Sidebar'
 import CardContainer from '../CardContainer/CardContainer'
 import Nav from '../Nav/Nav'
 import PeopleFetch from '../../Helpers/People/PeopleFetch';
+import PlanetsFetch from '../../Helpers/Planets/PlanetsFetch';
 
 class App extends Component {
   constructor() {
@@ -33,8 +34,13 @@ class App extends Component {
 
 // TODO: Clean up code / rename
   getData(input) {
-    const apiCall = new PeopleFetch();
-    apiCall.getPeople(this)
+    // const apiCall = new PeopleFetch();
+    // apiCall.getPeople(this)
+    const apiCall = new PlanetsFetch();
+    apiCall.getPlanets(this)
+
+
+
   }
 
   toggleActive(tab) {

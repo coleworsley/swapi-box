@@ -1,39 +1,30 @@
-import Person from './Person';
+import Planet from './Planet';
 
-export default class PeopleFetch {
-  constructor(){
-    this.url = `https://swapi.co/api/people/`;
+export default class PlanetsFetch {
+  constructor() {
+    this.url = `https://swapi.co/api/planets/`;
   }
 
-  getPeople(component) {
+  getPlanets(component) {
     fetch(this.url)
       .then(response => response.json())
-      .then(people => this.getNestedData(people))
-      .then(people => component.setState({ people }))
+      .then(planets => this.getNestedData(planets))
+      .then(planets => component.setState({ planets }))
   }
 
-  getNestedData(people) {
-    const homeworldData = people.results.map(e => {
-      return fetch(e.homeworld).then(response => response.json())
+  getNestedData(planets) {
+    const residents = planets.results.map(e => {
+      return Promise.all(e.residents.map(resident => {
+        return fetch(resident).then(response => response.json());
+      }));
     });
 
-    const speciesData = people.results.map(e => {
-      return fetch(e.species).then(response => response.json())
-    });
-
-    return Promise.all([...homeworldData, ...speciesData])
+    return Promise.all(residents)
       .then(data => {
 
-        return people.results.map((person, i) => {
-          const homeworld = data[i];
-          const species = data[i + people.results.length];
-          return new Person (
-            person.name,
-            homeworld.name,
-            species.name,
-            species.language,
-            homeworld.population
-          )
+        return planets.results.map((planet, i) => {
+          const resident = data[i];
+          return new Planet (planet, data[i])
         })
       })
   }

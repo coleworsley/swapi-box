@@ -1,10 +1,11 @@
 export default class Planet {
-  constructor(name, terrain, population, climate, residents) {
-    this.name = name;
-    this.terrain = terrain;
-    this.population = population;
-    this.climate = climate;
-    this.residents = residents;
+  constructor(planetObj, residents) {
+    this.name = planetObj.name;
+    this.terrain = planetObj.terrain;
+    this.population = planetObj.population;
+    this.climate = planetObj.climate;
+    this.residents = residents.map(resident => resident.name);
     this.favorite = false;
+    console.log(this);
   }
 }

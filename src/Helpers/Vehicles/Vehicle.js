@@ -1,4 +1,4 @@
-export default class Planet {
+export default class Vehicle {
   constructor(name, model, vehicleClass, passengers) {
     this.name = name;
     this.model = model;
