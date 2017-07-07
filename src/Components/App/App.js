@@ -49,7 +49,8 @@ class App extends Component {
       <div className="app">
         <Sidebar films={this.state.films}/>
         <main>
-          <Nav getData={this.getData.bind(this)}/>
+          <Nav getData={this.getData.bind(this)}
+               activeCard={cardData}/>
           <CardContainer cardData={this.state[cardData]}/>
         </main>
       </div>

@@ -7,16 +7,26 @@ const Card = ({ data }) => {
   switch(element) {
     case 'residents':
       return (
-        <div className='residents'>
-          <p>Residents</p>
+        <table className='residents'>
+          <thead>
+            <tr>Residents</tr>
+          </thead>
+          <tbody>
+
           {
             data[element].map((item, index )=> {
               return (
-                <p>{item}</p>
+                <tr>
+                  <td>
+                    {item}
+
+                  </td>
+                </tr>
               )
             })
           }
-        </div>
+        </tbody>
+        </table>
       )
     case 'name':
     case 'favorite':
