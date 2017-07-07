@@ -1,7 +1,7 @@
 import React from 'react';
 import './Nav.css'
 
-const Nav = ({getData}) => {
+const Nav = ({getData, activeCard}) => {  
 
   return (
     <nav>
