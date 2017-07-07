@@ -12,11 +12,11 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      films: {},
       people: {},
       planets: {},
       vehicles: {},
-      active: 'planets',
+      favorites: [],
+      active: 'people',
     }
   }
 
@@ -39,8 +39,13 @@ class App extends Component {
     }
   }
 
-  toggleActive(tab) {
-    this.setState({active: tab})
+  toggleFavorite(e) {
+    const newFavorites = Object.assign([], this.state.favorites);
+    const currentData = this.state[this.state.active];
+    const dataToPush = currentData.find(elem => elem.name === e.target.parentNode.id)
+
+  
+    this.setState({ favorites: [...newFavorites, dataToPush] });
   }
 
   render() {
@@ -51,7 +56,8 @@ class App extends Component {
         <main>
           <Nav getData={this.getData.bind(this)}
                activeCard={cardData}/>
-          <CardContainer cardData={this.state[cardData]}/>
+          <CardContainer cardData={this.state[cardData]}
+                         toggleFavorite={this.toggleFavorite.bind(this)}/>
         </main>
       </div>
     );
