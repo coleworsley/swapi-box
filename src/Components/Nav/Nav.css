@@ -1,0 +1,30 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  padding-left: 50px;
+}
+
+
+button {
+  border: none;
+  padding: 0;
+  margin: 0 10px;
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+nav button {
+  font-size: 30px;
+  border-bottom: 2px solid transparent
+}
+
+nav button:hover {
+  color: #FEDA4A;
+  border-color: #FEDA4A
+}
+
+button:focus {
+  outline:0;
+}
