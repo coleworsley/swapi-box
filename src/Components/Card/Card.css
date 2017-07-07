@@ -1,0 +1,31 @@
+.card {
+  width: 30%;
+  min-width: 250px;
+  max-height: 400px;
+  min-height: 400px;
+  padding: 10px;
+  margin: 1%;
+  position: relative;
+  background-color: grey;
+  overflow-y: scroll;
+}
+
+.card-title {
+  background-color: rgb(164, 157, 64);
+  text-align: center;
+}
+
+.card-info {
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
+.card-favorite-button {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 35px;
+  width: 100%;
+  background-color: rgb(86, 64, 164);
+  margin: 0;
+}

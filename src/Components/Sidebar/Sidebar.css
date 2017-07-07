@@ -1,4 +1,55 @@
 .side-bar {
   width: 25%;
   min-width: 300px;
+  height: 100vh;
+}
+
+.title {
+  height: 20vh;
+  margin: 0;
+  color: #feda4a;
+}
+
+.scroll {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 80vh;
+  color: #feda4a;
+  font-family: sans-serif;
+  font-size: 150%;
+  /*font-weight: 600;*/
+  letter-spacing: 6px;
+  line-height: 150%;
+  perspective: 400px;
+  text-align: justify;
+  overflow-y: hidden;
+}
+
+.crawl {
+  position: relative;
+  top: 1000px;
+  transform-origin: 50% 100%;
+  animation: crawl 45s linear infinite;
+}
+
+.crawl > .scroll-title {
+  font-size: 90%;
+  text-align: center;
+}
+
+.crawl > .scroll-title h1 {
+  margin: 0 0 100px;
+  text-transform: uppercase;
+}
+
+@keyframes crawl {
+  0% {
+    top: 110%;
+    transform: rotateX(20deg)  translateZ(0);
+  }
+  100% {
+    top: -2500px;
+    transform: rotateX(25deg) translateZ(-1000px);
+  }
 }

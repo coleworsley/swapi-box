@@ -1,7 +1,7 @@
 import React from 'react';
 import './Nav.css'
 
-const Nav = ({getData}) => {
+const Nav = ({getData, activeCard}) => {  
 
   return (
     <nav>
@@ -15,7 +15,6 @@ const Nav = ({getData}) => {
               onClick={(e) => getData(e)}>Vehicles</button>
 
       <button id='favorite-button'
-              ref='favorite-button'
               onClick={(e) => getData(e)}>Favorites</button>
     </nav>
   )
