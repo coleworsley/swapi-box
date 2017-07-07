@@ -13,46 +13,45 @@ describe('SIDEBAR TEST - ALL', () => {
     });
   }
 
+  beforeEach(() => {
+    fetchMock.get('https://swapi.co/api/films', {
+      status: 200,
+      body: filmMock,
+    })
+  });
+
   afterEach(() => {
     expect(fetchMock.calls().unmatched).toEqual([]);
     fetchMock.restore()
   })
 
-  it('should display an error when it doesnt get the stuff', async () => {
-    fetchMock.get('https://swapi.co/api/films', {
-      status: 500,
-      body: filmMock,
-    });
+  it('should make an API call on mount', async () => {
 
     const wrapper = mount(<Sidebar/>);
     // await wrapper.update() DOESN'T WORK
     await resolveAfter2Seconds(); // WORKS
 
     expect(fetchMock.called()).toEqual(true);
-    expect(wrapper.state().films.allFilms.length).toEqual(20);
+    expect(wrapper.state().films.allFilms.length).toEqual(2);
   });
 
 
-
-
-
-
-
-
-
-
-  // console.log(wrapper.debug())
-
-
-  it('should make API call', () =>{
+  it('error catch', () =>{
 
   })
 
-  it('should contain scrolling text', () =>{
+  it('should contain scrolling text', async () =>{
+    const wrapper = mount(<Sidebar/>);
+    await resolveAfter2Seconds();
+    const text = wrapper.find('.scroll-title')
+    expect(text).toHaveLength(1)
 
   })
 
-  it('should contain state', () =>{
+  it('should contain state', async () =>{
+    const wrapper = mount(<Sidebar/>)
+    await resolveAfter2Seconds();
+    expect(wrapper.state().films.allFilms).toHaveLength(2)
 
   })
 

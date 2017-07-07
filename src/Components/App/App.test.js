@@ -1,10 +1,49 @@
 import React from 'react';
 import App from './App';
 import { shallow, mount } from 'enzyme'
+import { filmMock } from '../../Helpers/MockData/filmMock'
+import fetchMock from 'fetch-mock'
 
 describe('APP TEST - ON LOAD', () => {
-  it('should render a nav, a sidebar, and a card container on load', () =>{
 
+  beforeEach(() => {
+    fetchMock.get('https://swapi.co/api/films', {
+      status: 200,
+      body: filmMock,
+    })
+  });
+
+
+  afterEach(() => {
+    expect(fetchMock.calls().unmatched).toEqual([]);
+    fetchMock.restore()
+  })
+
+
+  const resolveAfter2Seconds = () => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+    });
+  }
+
+
+
+  it('should render a nav, a sidebar, and a card container on load', async () =>{
+    // console.log(wrapper.debug())
+    const wrapper = mount(<App/>)
+    await resolveAfter2Seconds
+
+    const cardContainer = wrapper.find('.card-container')
+    const nav = wrapper.find('nav')
+    const aside = wrapper.find('aside')
+
+    // console.log(wrapper.debug())
+
+    expect(cardContainer).toHaveLength(1)
+    expect(nav.length).toEqual(1)
+    expect(aside.length).toEqual(1)
   })
 
   it('should hold state, and state should be empty if localstorage is empty', () =>{
