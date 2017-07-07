@@ -13,9 +13,6 @@ describe('SIDEBAR TEST - ALL', () => {
     });
   }
 
-
-
-
   afterEach(() => {
     expect(fetchMock.calls().unmatched).toEqual([]);
     fetchMock.restore()
@@ -28,10 +25,11 @@ describe('SIDEBAR TEST - ALL', () => {
     });
 
     const wrapper = mount(<Sidebar/>);
-    await resolveAfter2Seconds();
+    // await wrapper.update() DOESN'T WORK
+    await resolveAfter2Seconds(); // WORKS
 
     expect(fetchMock.called()).toEqual(true);
-    expect(wrapper.state().films.allFilms.length).toEqual(2);
+    expect(wrapper.state().films.allFilms.length).toEqual(20);
   });
 
 
