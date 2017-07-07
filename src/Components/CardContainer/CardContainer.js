@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../Card/Card';
+import './CardContainer.css';
 
 const CardContainer = ({cardData}) => {
 const cards = cardData.length > 0 ? cardData.map(e => {
