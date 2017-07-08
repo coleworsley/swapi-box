@@ -19,7 +19,7 @@ export default class PeopleFetch {
     });
 
     const speciesData = people.results.map(e => {
-      return fetch(e.species).then(response => response.json())
+      return fetch(e.species[0]).then(response => response.json())
     });
 
     return Promise.all([...homeworldData, ...speciesData])

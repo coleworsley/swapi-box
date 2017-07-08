@@ -80,7 +80,7 @@ describe('APP TEST - ON BUTTON CLICK', () => {
       body: filmMock,
     })
 
-    fetchMock.get('https://swapi.co/api/people', {
+    fetchMock.get('https://swapi.co/api/people/', {
       status: 200,
       body: peopleMock,
     })
@@ -95,16 +95,16 @@ describe('APP TEST - ON BUTTON CLICK', () => {
       body: planetMock,
     })
 
-    // fetchMock.get('http://www.swapi.co/api/vehicles', {
-    //   status: 200,
-    //   body: filmMock,
-    // })
-
+    fetchMock.get('http://www.swapi.co/*', {
+      status: 200,
+      body: filmMock,
+    })
+// http://swapi.co/api/planets/1
     fetchMock.get('http://swapi.co/api/planets/1/', {
      status: 200,
      body: HomeworldMock,
    })
-
+  //http://swapi.co/api/species/1/
    fetchMock.get('http://swapi.co/api/species/1/', {
       status: 200,
       body: speciesMock,
@@ -129,17 +129,17 @@ describe('APP TEST - ON BUTTON CLICK', () => {
 
   it.only('should fire an API call function depending on which tab is clicked', async () => {
     const wrapper = mount(<App/>)
-    await resolveAfter2Seconds()
 
     const peopleTab = wrapper.find('#people-button')
     peopleTab.simulate('click')
     // expect(fetchMock.called()).toEqual(true);
-    // expect(fetchMock.lastUrl()).toEqual('/api/v1/groceries');
-    // expect(fetchMock.lastOptions()).toEqual({
-    //   method: 'POST',
-    //   body: '{"grocery":{"name":"Foo","quantity":"1000"}}',
-    //   headers: { 'Content-Type': 'application/json' }
-    // });
+    await resolveAfter2Seconds()
+    expect(fetchMock.lastUrl()).toEqual('http://swapi.co/api/species/1/');
+    expect(fetchMock.lastOptions()).toEqual({
+      method: 'POST',
+      body: '{"grocery":{"name":"Foo","quantity":"1000"}}',
+      headers: { 'Content-Type': 'application/json' }
+    });
 
 
   })
