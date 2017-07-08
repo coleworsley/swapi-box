@@ -54,7 +54,7 @@ export const PeopleMock = {
 				"http://swapi.co/api/films/1/"
 			],
 			"species": [
-				"http://swapi.co/api/species/2/"
+				"http://swapi.co/api/species/1/"
 			],
 			"vehicles": [],
 			"starships": [],
@@ -71,7 +71,7 @@ export const PeopleMock = {
 			"eye_color": "red",
 			"birth_year": "33BBY",
 			"gender": "n/a",
-			"homeworld": "http://swapi.co/api/planets/8/",
+			"homeworld": "http://swapi.co/api/planets/1",
 			"films": [
 				"http://swapi.co/api/films/2/",
 				"http://swapi.co/api/films/5/",
@@ -82,7 +82,7 @@ export const PeopleMock = {
 				"http://swapi.co/api/films/7/"
 			],
 			"species": [
-				"http://swapi.co/api/species/2/"
+				"http://swapi.co/api/species/1/"
 			],
 			"vehicles": [],
 			"starships": [],
@@ -126,7 +126,7 @@ export const PeopleMock = {
 			"eye_color": "brown",
 			"birth_year": "19BBY",
 			"gender": "female",
-			"homeworld": "http://swapi.co/api/planets/2/",
+			"homeworld": "http://swapi.co/api/planets/1",
 			"films": [
 				"http://swapi.co/api/films/2/",
 				"http://swapi.co/api/films/6/",
@@ -207,7 +207,7 @@ export const PeopleMock = {
 				"http://swapi.co/api/films/1/"
 			],
 			"species": [
-				"http://swapi.co/api/species/2/"
+				"http://swapi.co/api/species/1/"
 			],
 			"vehicles": [],
 			"starships": [],
@@ -248,7 +248,7 @@ export const PeopleMock = {
 			"eye_color": "blue-gray",
 			"birth_year": "57BBY",
 			"gender": "male",
-			"homeworld": "http://swapi.co/api/planets/20/",
+			"homeworld": "http://swapi.co/api/planets/1",
 			"films": [
 				"http://swapi.co/api/films/2/",
 				"http://swapi.co/api/films/5/",

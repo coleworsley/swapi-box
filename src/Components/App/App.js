@@ -16,7 +16,8 @@ class App extends Component {
       planets: [],
       vehicles: [],
       favorites: [],
-      active: 'people',
+      active: 'loading',
+      loading: false,
     }
   }
 
