@@ -13,6 +13,7 @@ export default class PeopleFetch {
   }
 
   getNestedData(people) {
+    console.log(people)
     const homeworldData = people.results.map(e => {
       return fetch(e.homeworld).then(response => response.json())
     });

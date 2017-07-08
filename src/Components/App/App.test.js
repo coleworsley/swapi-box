@@ -2,8 +2,12 @@ import React from 'react';
 import App from './App';
 import { shallow, mount } from 'enzyme'
 import { filmMock } from '../../Helpers/MockData/filmMock'
-import { PeopleMock } from '../../Helpers/MockData/PeopleMock'
-import { filmMock } from '../../Helpers/MockData/filmMock'
+import { peopleMock } from '../../Helpers/MockData/PeopleMock'
+import { speciesMock } from '../../Helpers/MockData/SpeciesMock'
+// import { Vehicle } from '../../Helpers/MockData/filmMock'
+import { planetMock, residents  } from '../../Helpers/MockData/PlanetMock'
+import { HomeworldMock } from '../../Helpers/MockData/HomeworldMock'
+
 import fetchMock from 'fetch-mock'
 
 describe('APP TEST - ON LOAD', () => {
@@ -26,7 +30,7 @@ describe('APP TEST - ON LOAD', () => {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve();
-      }, 5000);
+      }, 2000);
     });
   }
 
@@ -59,7 +63,7 @@ describe('APP TEST - ON LOAD', () => {
         "people": [],
         "planets": [],
         "vehicles": [],
-        "loading": true,
+        "loading": false,
       })
       })
 
@@ -78,32 +82,32 @@ describe('APP TEST - ON BUTTON CLICK', () => {
 
     fetchMock.get('https://swapi.co/api/people', {
       status: 200,
-      body: filmMock,
+      body: peopleMock,
     })
 
     fetchMock.get('http://swapi.co/api/people/1/', {
       status: 200,
-      body: filmMock,
+      body: residents,
     })
 
     fetchMock.get('http://www.swapi.co/api/planets', {
       status: 200,
-      body: filmMock,
+      body: planetMock,
     })
 
-    fetchMock.get('http://www.swapi.co/api/vehicles', {
-      status: 200,
-      body: filmMock,
-    })
+    // fetchMock.get('http://www.swapi.co/api/vehicles', {
+    //   status: 200,
+    //   body: filmMock,
+    // })
 
     fetchMock.get('http://swapi.co/api/planets/1/', {
      status: 200,
-     body: filmMock,
+     body: HomeworldMock,
    })
 
    fetchMock.get('http://swapi.co/api/species/1/', {
       status: 200,
-      body: filmMock,
+      body: speciesMock,
     })
 
   });
@@ -117,13 +121,13 @@ describe('APP TEST - ON BUTTON CLICK', () => {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve();
-      }, 9000);
+      }, 2000);
     });
   }
 
 
 
-  it('should fire an API call function depending on which tab is clicked', async () => {
+  it.only('should fire an API call function depending on which tab is clicked', async () => {
     const wrapper = mount(<App/>)
     await resolveAfter2Seconds()
 

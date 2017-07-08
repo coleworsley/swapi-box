@@ -1,4 +1,4 @@
-export const species =
+export const speciesMock =
 {
 	"name": "Human",
 	"classification": "mammal",
