@@ -55,16 +55,20 @@ class App extends Component {
   }
 
   toggleFavorite(e) {
-      let newFavorites = Object.assign([], this.state.favorites);
-      const currentData = this.state[this.state.active];
-      const dataToPush = currentData.find(elem => elem.name === e.target.parentNode.id)
-      if (newFavorites.includes(dataToPush)) {
-        newFavorites = newFavorites.filter(elem => elem.name !== dataToPush.name)
-      } else {
-        newFavorites.push(dataToPush);
-      }
-      this.setState({ favorites: newFavorites });
+    let newFavorites = Object.assign([], this.state.favorites);
+    const currentData = this.state[this.state.active];
+    const dataToPush = currentData.find(elem => elem.name === e.target.parentNode.id)
+    if (newFavorites.includes(dataToPush)) {
+      newFavorites = newFavorites.filter(elem => elem.name !== dataToPush.name)
+    } else {
+      newFavorites.push(dataToPush);
     }
+    this.setState({
+      favorites: newFavorites,
+    });
+  }
+
+
 
   render() {
     const cardData = this.state.active
@@ -75,6 +79,7 @@ class App extends Component {
           <Nav getData={this.getData.bind(this)}
                activeCard={cardData}/>
           <CardContainer cardData={this.state[cardData]}
+                         favoritesArray={this.state.favorites}
                          toggleFavorite={this.toggleFavorite.bind(this)}/>
         </main>
       </div>
