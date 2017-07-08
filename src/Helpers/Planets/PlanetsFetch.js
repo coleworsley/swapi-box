@@ -9,7 +9,10 @@ export default class PlanetsFetch {
     fetch(this.url)
       .then(response => response.json())
       .then(planets => this.getNestedData(planets))
-      .then(planets => component.setState({ planets, active: "planets" }))
+      .then(planets => {
+        component.setState({ planets, active: "planets" })
+        localStorage.setItem('planets', JSON.stringify(planets))
+      })
   }
 
   getNestedData(planets) {

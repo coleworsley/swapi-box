@@ -2,8 +2,6 @@ import React from 'react';
 import App from './App';
 import { shallow, mount } from 'enzyme';
 import { mockPeople, mockHomeworld, mockSpecies, mockPlanets, mockResident, mockFilms, mockVehicles } from '../../Helpers/MockData'
-
-
 import fetchMock from 'fetch-mock'
 
 describe('APP TEST - ON LOAD', () => {
@@ -67,6 +65,7 @@ describe('APP TEST - ON LOAD', () => {
 });
 
 describe('APP TEST - ON BUTTON CLICK', () => {
+  var localStorage = {}
 
   beforeEach(() => {
     fetchMock.get('https://swapi.co/api/films/', {
