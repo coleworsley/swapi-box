@@ -132,7 +132,11 @@ describe('APP TEST - ON BUTTON CLICK', () => {
     await resolveAfter2Seconds()
 
     const peopleTab = wrapper.find('#people-button')
+    console.log('before click')
     peopleTab.simulate('click')
+
+
+
     // expect(fetchMock.called()).toEqual(true);
     // expect(fetchMock.lastUrl()).toEqual('/api/v1/groceries');
     // expect(fetchMock.lastOptions()).toEqual({

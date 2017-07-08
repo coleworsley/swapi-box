@@ -1,4 +1,4 @@
-export const PeopleMock = {
+export const peopleMock = {
 	"count": 87,
 	"next": "http://swapi.co/api/people/?page=2",
 	"previous": null,
