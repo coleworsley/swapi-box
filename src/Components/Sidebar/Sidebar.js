@@ -23,7 +23,7 @@ export default class Sidebar extends Component {
   }
 
   componentDidMount() {
-    const url = 'https://swapi.co/api/films';
+    const url = 'https://swapi.co/api/films/';
     fetch(url)
       .then(response => response.json())
       .then(result => {

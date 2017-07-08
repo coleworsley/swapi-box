@@ -1,12 +1,8 @@
 import React from 'react';
 import App from './App';
-import { shallow, mount } from 'enzyme'
-import { filmMock } from '../../Helpers/MockData/filmMock'
-import { peopleMock } from '../../Helpers/MockData/PeopleMock'
-import { speciesMock } from '../../Helpers/MockData/SpeciesMock'
-// import { Vehicle } from '../../Helpers/MockData/filmMock'
-import { planetMock, residents  } from '../../Helpers/MockData/PlanetMock'
-import { HomeworldMock } from '../../Helpers/MockData/HomeworldMock'
+import { shallow, mount } from 'enzyme';
+import { mockPeople, mockHomeworld, mockSpecies, mockPlanets, mockResident, mockFilms, mockVehicles } from '../../Helpers/MockData'
+
 
 import fetchMock from 'fetch-mock'
 
@@ -19,12 +15,10 @@ describe('APP TEST - ON LOAD', () => {
     })
   });
 
-
   afterEach(() => {
     expect(fetchMock.calls().unmatched).toEqual([]);
     fetchMock.restore()
-  })
-
+  });
 
   const resolveAfter2Seconds = () => {
     return new Promise(resolve => {
@@ -75,39 +69,39 @@ describe('APP TEST - ON LOAD', () => {
 describe('APP TEST - ON BUTTON CLICK', () => {
 
   beforeEach(() => {
-    fetchMock.get('https://swapi.co/api/films', {
+    fetchMock.get('https://swapi.co/api/films/', {
       status: 200,
-      body: filmMock,
+      body: mockFilms,
     })
 
     fetchMock.get('https://swapi.co/api/people/', {
       status: 200,
-      body: peopleMock,
+      body: mockPeople,
     })
 
     fetchMock.get('http://swapi.co/api/people/1/', {
       status: 200,
-      body: residents,
+      body: mockResident,
     })
 
-    fetchMock.get('http://www.swapi.co/api/planets', {
+    fetchMock.get('http://www.swapi.co/api/planets/', {
       status: 200,
-      body: planetMock,
+      body: mockPlanets,
     })
 
-    fetchMock.get('http://www.swapi.co/*', {
+    fetchMock.get('https://swapi.co/api/starships/', {
       status: 200,
-      body: filmMock,
+      body: mockVehicles,
     })
 // http://swapi.co/api/planets/1
     fetchMock.get('http://swapi.co/api/planets/1/', {
      status: 200,
-     body: HomeworldMock,
+     body: mockHomeworld,
    })
   //http://swapi.co/api/species/1/
    fetchMock.get('http://swapi.co/api/species/1/', {
       status: 200,
-      body: speciesMock,
+      body: mockSpecies,
     })
 
   });

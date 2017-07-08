@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import { shallow, mount } from 'enzyme'
-import { filmMock } from '../../Helpers/MockData/filmMock'
+import { mockFilms } from '../../Helpers/MockData'
 import fetchMock from 'fetch-mock'
 
 describe('SIDEBAR TEST - ALL', () => {
@@ -14,9 +14,9 @@ describe('SIDEBAR TEST - ALL', () => {
   }
 
   beforeEach(() => {
-    fetchMock.get('https://swapi.co/api/films', {
+    fetchMock.get('https://swapi.co/api/films/', {
       status: 200,
-      body: filmMock,
+      body: mockFilms,
     })
   });
 
