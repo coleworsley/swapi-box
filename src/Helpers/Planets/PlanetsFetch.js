@@ -2,7 +2,7 @@ import Planet from './Planet';
 
 export default class PlanetsFetch {
   constructor() {
-    this.url = `https://swapi.co/api/planets/`;
+    this.url = `https://www.swapi.co/api/planets/`;
   }
 
   getPlanets(component) {
