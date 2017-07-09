@@ -36,17 +36,26 @@ const Card = ({ data, toggleFavorite, favorite }) => {
       case 'favorite':
         return null;
       default:
-        return  <p className='card-info'>{element}: {data[element]}</p>
+        return  <p className='card-info'>
+                  <span className='subject'>{element}: </span>
+                  {data[element]}
+                </p>
       }
   });
 
   return (
-    <div className={`card ${favorite ? 'favorite' : ''}`}
-         id={data.name}>
-      <h3 className='card-title'>{data.name}</h3>
+    <div
+      className={`card ${favorite ? 'favorite' : ''}`}
+      id={data.name}>
+      <div className='card-title'>
+        <h3 className='card-title-text'>{data.name}</h3>
+      </div>
+
       {cardInfo}
-      <button className='card-favorite-button'
-              onClick={(e)=>toggleFavorite(e)}>Favorite</button>
+
+      <button
+        className='card-favorite-button'
+        onClick={(e)=>toggleFavorite(e)}>{favorite ? 'Unfavorite' : 'Favorite'}</button>
     </div>
   )
 }

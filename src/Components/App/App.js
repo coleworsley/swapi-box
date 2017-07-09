@@ -75,10 +75,10 @@ class App extends Component {
     const cardData = this.state.active
     return (
       <div className="app">
-        <Sidebar films={this.state.films}/>
+        <Nav getData={this.getData.bind(this)}
+          activeCard={cardData}/>
         <main>
-          <Nav getData={this.getData.bind(this)}
-               activeCard={cardData}/>
+          <Sidebar films={this.state.films}/>
           <CardContainer cardData={this.state[cardData]}
                          favoritesArray={this.state.favorites}
                          toggleFavorite={this.toggleFavorite.bind(this)}/>
