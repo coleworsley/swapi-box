@@ -44,9 +44,9 @@ const Card = ({ data, toggleFavorite, favorite }) => {
   });
 
   return (
-    <div
-      className={`card ${favorite ? 'favorite' : ''}`}
-      id={data.name}>
+    <div className={`card ${favorite ? 'favorite' : ''}`}
+        id={data.name}>
+
       <div className='card-title'>
         <h3 className='card-title-text'>{data.name}</h3>
       </div>

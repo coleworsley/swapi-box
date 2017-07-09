@@ -88,7 +88,8 @@ class App extends Component {
           <Sidebar films={this.state.films}/>
           <CardContainer cardData={this.state[cardData]}
                          favoritesArray={this.state.favorites}
-                         toggleFavorite={this.toggleFavorite.bind(this)}/>
+                         toggleFavorite={this.toggleFavorite.bind(this)}
+                         active={cardData}/>
         </main>
       </div>
     );

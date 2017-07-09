@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../Card/Card';
 import './CardContainer.css';
 
-const CardContainer = ({ cardData, toggleFavorite, favoritesArray }) => {
+const CardContainer = ({ cardData, toggleFavorite, favoritesArray, active }) => {
 const cards = cardData.length > 0 ?
               cardData.map(e => {
 
