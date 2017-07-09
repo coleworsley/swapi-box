@@ -10,8 +10,10 @@ export default class VehicleFetch {
       .then(vehicleArray => vehicleArray.results.map((element) => {
 
         return new Vehicle(element)
-      })).then(vehicleArray => {
-        component.setState({vehicles: vehicleArray, active: "vehicles"})
+      }))
+      .then(vehicles => {
+        component.setState({ vehicles, active: "vehicles" })
+        localStorage.setItem('vehicles', JSON.stringify(vehicles))
       })
   }
 

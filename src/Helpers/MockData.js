@@ -68,7 +68,9 @@ export const mockPlanets = {
 			"climate": "temperate, tropical",
 			"terrain": "jungle, rainforests",
 			"population": "1000",
-			"residents": [],
+			"residents": [
+				"http://swapi.co/api/people/1/"
+			],
 		},
   ]
 }

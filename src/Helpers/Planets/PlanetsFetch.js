@@ -2,14 +2,17 @@ import Planet from './Planet';
 
 export default class PlanetsFetch {
   constructor() {
-    this.url = `https://swapi.co/api/planets/`;
+    this.url = `https://www.swapi.co/api/planets/`;
   }
 
   getPlanets(component) {
     fetch(this.url)
       .then(response => response.json())
       .then(planets => this.getNestedData(planets))
-      .then(planets => component.setState({ planets, active: "planets" }))
+      .then(planets => {
+        component.setState({ planets, active: "planets" })
+        localStorage.setItem('planets', JSON.stringify(planets))
+      })
   }
 
   getNestedData(planets) {

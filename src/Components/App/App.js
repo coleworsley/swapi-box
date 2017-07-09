@@ -6,6 +6,7 @@ import Nav from '../Nav/Nav'
 import PeopleFetch from '../../Helpers/People/PeopleFetch';
 import PlanetsFetch from '../../Helpers/Planets/PlanetsFetch';
 import VehiclesFetch from '../../Helpers/Vehicles/VehiclesFetch';
+import { loadFromLocal } from '../../Helpers/loadFromLocal'
 
 
 class App extends Component {
@@ -19,6 +20,10 @@ class App extends Component {
       active: 'loading',
       loading: false,
     }
+  }
+
+  componentDidMount() {
+    loadFromLocal(this)
   }
 
   getData(input) {
@@ -61,8 +66,10 @@ class App extends Component {
     const dataToPush = currentData.find(elem => elem.name === e.target.parentNode.id)
     if (newFavorites.includes(dataToPush)) {
       newFavorites = newFavorites.filter(elem => elem.name !== dataToPush.name)
+      localStorage.setItem('favorites', JSON.stringify(newFavorites))
     } else {
       newFavorites.push(dataToPush);
+      localStorage.setItem('favorites', JSON.stringify(newFavorites))
     }
     this.setState({
       favorites: newFavorites,

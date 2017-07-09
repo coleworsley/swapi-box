@@ -9,11 +9,13 @@ export default class PeopleFetch {
     fetch(this.url)
       .then(response => response.json())
       .then(people => this.getNestedData(people))
-      .then(people => component.setState({ people, active: "people" }))
+      .then(people => {
+        component.setState({ people, active: "people" })
+        localStorage.setItem('people', JSON.stringify(people))
+      })
   }
 
   getNestedData(people) {
-    console.log(people)
     const homeworldData = people.results.map(e => {
       return fetch(e.homeworld).then(response => response.json())
     });
