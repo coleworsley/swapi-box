@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.css';
 
 const Card = ({ data, toggleFavorite, favorite }) => {
-  const keys = Object.keys(data);
+  const keys = Object.keys(data);  
   const residentTable = (elem, i) => {
     return (
       <table className='residents' key={elem.name + 'table' + i}>
@@ -36,10 +36,10 @@ const Card = ({ data, toggleFavorite, favorite }) => {
       case 'favorite':
         return null;
       default:
-        return  <p className='card-info' key={element + index}>
-                  <span className='subject'>{element}: </span>
-                  {data[element]}
-                </p>
+        return <p className='card-info' key={element + index}>
+                 <span className='subject'>{element}: </span>
+                 {data[element]}
+               </p>
       }
   });
 
@@ -50,8 +50,9 @@ const Card = ({ data, toggleFavorite, favorite }) => {
       <div className='card-title'>
         <h3 className='card-title-text'>{data.name}</h3>
       </div>
-
-      {cardInfo}
+      <div className="card-info-container">
+        {cardInfo}
+      </div>
 
       <button
         className='card-favorite-button'
