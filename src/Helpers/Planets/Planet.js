@@ -6,6 +6,5 @@ export default class Planet {
     this.climate = planetObj.climate;
     this.residents = residents.map(resident => resident.name);
     this.favorite = false;
-    console.log(this);
   }
 }
