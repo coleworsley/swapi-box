@@ -12,7 +12,7 @@ describe('NAV - ALL', () => {
     expect(buttons.length).toEqual(4)
   })
 
-  it.only('should fire an onclick function when any of the 4 buttons are clicked', () =>{
+  it('should fire an onclick function when any of the 4 buttons are clicked', () =>{
     const getData = jest.fn()
     const wrapper = shallow(<Nav getData={getData}/>)
 

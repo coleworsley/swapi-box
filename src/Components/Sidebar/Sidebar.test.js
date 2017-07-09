@@ -36,10 +36,6 @@ describe('SIDEBAR TEST - ALL', () => {
   });
 
 
-  it('error catch', () =>{
-
-  })
-
   it('should contain scrolling text', async () =>{
     const wrapper = mount(<Sidebar/>);
     await resolveAfter2Seconds();

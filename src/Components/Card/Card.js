@@ -3,19 +3,19 @@ import './Card.css';
 
 const Card = ({ data, toggleFavorite, favorite }) => {
   const keys = Object.keys(data);
-  const residentTable = (elem) => {
+  const residentTable = (elem, i) => {
     return (
-      <table className='residents'>
+      <table className='residents' key={elem.name + 'table' + i}>
         <thead>
-          <tr>
+          <tr key={elem.name + 'tr1' + i}>
             <td>Residents</td>
           </tr>
         </thead>
         <tbody>
         {
-          data[elem].map(item => {
+          data[elem].map((item, j )=> {
             return (
-              <tr>
+              <tr key={item + 'tr2' +j}>
                 <td>
                   {item}
                 </td>
@@ -28,7 +28,7 @@ const Card = ({ data, toggleFavorite, favorite }) => {
     )
   }
 
-  const cardInfo = keys.map(element => {
+  const cardInfo = keys.map((element, index) => {
     switch(element) {
       case 'residents':
         return residentTable(element);
@@ -36,7 +36,7 @@ const Card = ({ data, toggleFavorite, favorite }) => {
       case 'favorite':
         return null;
       default:
-        return  <p className='card-info'>
+        return  <p className='card-info' key={element + index}>
                   <span className='subject'>{element}: </span>
                   {data[element]}
                 </p>

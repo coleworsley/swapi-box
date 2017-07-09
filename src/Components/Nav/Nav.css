@@ -44,10 +44,10 @@ button {
 
 nav button {
   font-size: 24px;
-  border-bottom: 2px solid transparent;
+  border-bottom: 4px solid transparent;
 }
 
-nav button:hover {
+nav .button-container button:hover {
   color: #FEDA4A;
   border-color: #FEDA4A;
   box-shadow: 0px 2px 0px rgba(254, 218, 74, 0.3);
@@ -55,4 +55,12 @@ nav button:hover {
 
 button:focus {
   outline:0;
+}
+
+.people .people-button,
+.planets .planets-button,
+.favorites .favorites-button,
+.vehicles .vehicles-button {
+  box-shadow: 0px 2px 0px rgba(75, 213, 238, 0.3);
+  border-color: rgb(75, 213, 238);
 }
