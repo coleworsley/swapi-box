@@ -9,6 +9,23 @@ main {
 
 
 @media screen and (max-width: 550px) {
+  body .button-container {
+    flex-wrap: wrap;
+  }
+
+  nav .button-container,
+  body nav {
+    height: auto;
+    justify-content: center;
+  }
+
+  .people-button,
+  .planets-button,
+  .vehicles-button,
+  .favorites-button {
+    font-size: 20px;
+  }
+
   main {
     flex-direction: column;
     height: 100%;
@@ -19,5 +36,10 @@ main {
     min-width: 100%;
     width: 100%;
     height: 300px;
+  }
+
+  body .card-container {
+    min-height: 300px;
+    width: auto;
   }
 }

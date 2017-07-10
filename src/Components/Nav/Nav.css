@@ -77,4 +77,8 @@ button:focus {
   .button-container {
     width: 100%;
   }
+
+  .button-container {
+    justify-content: space-around;
+  }
 }
