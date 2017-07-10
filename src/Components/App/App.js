@@ -17,13 +17,13 @@ class App extends Component {
       planets: [],
       vehicles: [],
       favorites: [],
-      active: 'loading',
+      active: '',
       loading: false,
     }
   }
 
   componentDidMount() {
-    loadFromLocal(this)
+    loadFromLocal(this);
   }
 
   getData(input) {
@@ -33,24 +33,24 @@ class App extends Component {
           this.setState({active: 'planets'})
           break
         }
-        var apiCall = new PlanetsFetch();
-        apiCall.getPlanets(this)
+        const planetsFetch = new PlanetsFetch();
+        planetsFetch.getPlanets(this)
         break;
       case 'People':
         if (this.state.people.length) {
           this.setState({active: 'people'})
           break
         }
-        var apiCall = new PeopleFetch();
-        apiCall.getPeople(this)
+        const peopleFetch = new PeopleFetch();
+        peopleFetch.getPeople(this)
         break;
       case 'Vehicles':
         if (this.state.vehicles.length) {
           this.setState({active: 'vehicles'})
           break
         }
-        var apiCall = new VehiclesFetch();
-        apiCall.getVehicles(this)
+        const vehiclesFetch = new VehiclesFetch();
+        vehiclesFetch.getVehicles(this)
         break;
       case 'Favorites':
         this.setState({active: 'favorites'})
@@ -82,13 +82,15 @@ class App extends Component {
     const cardData = this.state.active
     return (
       <div className="app">
-        <Sidebar films={this.state.films}/>
+        <Nav getData={this.getData.bind(this)}
+             activeCard={cardData}/>
         <main>
-          <Nav getData={this.getData.bind(this)}
-               activeCard={cardData}/>
-          <CardContainer cardData={this.state[cardData]}
+          <Sidebar films={this.state.films}/>
+          <CardContainer cardData={this.state[cardData] || []}
                          favoritesArray={this.state.favorites}
-                         toggleFavorite={this.toggleFavorite.bind(this)}/>
+                         toggleFavorite={this.toggleFavorite.bind(this)}
+                         active={cardData}
+                         loading={this.state.loading}/>
         </main>
       </div>
     );

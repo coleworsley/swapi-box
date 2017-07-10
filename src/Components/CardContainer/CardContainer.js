@@ -2,19 +2,22 @@ import React from 'react';
 import Card from '../Card/Card';
 import './CardContainer.css';
 
-const CardContainer = ({ cardData, toggleFavorite, favoritesArray }) => {
-const cards = cardData.length > 0 ?
-              cardData.map(e => {
+const CardContainer = ({ cardData, toggleFavorite, favoritesArray, active, loading }) => {
 
-                return <Card data={e}
-                             key={e.name}
-                             toggleFavorite={toggleFavorite}
-                             favorite={favoritesArray.includes(e)}/>
-              }) : null;
+  const cards = cardData.length > 0 ? cardData.map(e => {
+    return <Card data={e}
+            key={e.name}
+            toggleFavorite={toggleFavorite}
+            favorite={favoritesArray.includes(e)}/>
+  }) : null;
+
+  const load = active === '' ? (
+      <h3>Select a button</h3>
+  ) : cards;
 
   return (
-    <section className='card-container'>
-      {cards}
+    <section className={`card-container ${loading ? 'loading' : ''}`}>
+      {load}
     </section>
   )
 }

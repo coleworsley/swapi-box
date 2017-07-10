@@ -1,24 +1,16 @@
 .side-bar {
   width: 25%;
   min-width: 300px;
-  height: 100vh;
-}
-
-.title {
-  height: 20vh;
-  margin: 0;
-  color: #feda4a;
 }
 
 .scroll {
   display: flex;
   justify-content: center;
   position: relative;
-  height: 80vh;
+  height: 85vh;
   color: #feda4a;
   font-family: sans-serif;
   font-size: 150%;
-  /*font-weight: 600;*/
   letter-spacing: 6px;
   line-height: 150%;
   perspective: 400px;

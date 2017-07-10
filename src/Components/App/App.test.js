@@ -66,7 +66,7 @@ describe('APP TEST - ON LOAD', () => {
 
     expect(wrapper.state()).toEqual(
       {
-        "active": "loading",
+        "active": "",
         "favorites": [],
         "people": [],
         "planets": [],
@@ -107,12 +107,12 @@ describe('APP TEST - ON BUTTON CLICK', () => {
       status: 200,
       body: mockVehicles,
     })
-// http://swapi.co/api/planets/1
+
     fetchMock.get('http://swapi.co/api/planets/1/', {
      status: 200,
      body: mockHomeworld,
    })
-  //http://swapi.co/api/species/1/
+
    fetchMock.get('http://swapi.co/api/species/1/', {
       status: 200,
       body: mockSpecies,
@@ -137,7 +137,7 @@ describe('APP TEST - ON BUTTON CLICK', () => {
 
   it('should fire an API call function depending on which tab is clicked', async () => {
     const wrapper = mount(<App/>)
-    const peopleTab = wrapper.find('#people-button')
+    const peopleTab = wrapper.find('.people-button')
 
     peopleTab.simulate('click')
 
@@ -152,7 +152,7 @@ describe('APP TEST - ON BUTTON CLICK', () => {
   it('state should update for "active" and for the name of button that was clicked', async () =>{
 
     const wrapper = mount(<App/>)
-    const peopleTab = wrapper.find('#people-button')
+    const peopleTab = wrapper.find('.people-button')
 
     peopleTab.simulate('click')
 
@@ -169,7 +169,7 @@ describe('APP TEST - ON BUTTON CLICK', () => {
 
   it('cards should render once the api call is complete', async () =>{
     const wrapper = mount(<App/>)
-    const peopleTab = wrapper.find('#people-button')
+    const peopleTab = wrapper.find('.people-button')
 
     peopleTab.simulate('click')
 
@@ -182,8 +182,8 @@ describe('APP TEST - ON BUTTON CLICK', () => {
 
   it('clicking on a new tab should cause state to update', async () =>{
     const wrapper = mount(<App/>)
-    const planetsTab = wrapper.find('#planets-button')
-    const peopleTab = wrapper.find('#people-button')
+    const planetsTab = wrapper.find('.planets-button')
+    const peopleTab = wrapper.find('.people-button')
 
     peopleTab.simulate('click')
     planetsTab.simulate('click')
@@ -241,7 +241,7 @@ describe('APP TEST - ON FAVORITE CLICK - CARD', () => {
 
   it('should cause state to update for favorites', async () =>{
     const wrapper = mount(<App/>)
-    const peopleTab = wrapper.find('#people-button')
+    const peopleTab = wrapper.find('.people-button')
     const cardList = wrapper.find('.card-container');
 
     peopleTab.simulate('click')
@@ -260,7 +260,7 @@ describe('APP TEST - ON FAVORITE CLICK - CARD', () => {
 
   it('it should unfavorite cards if theyre clicked again by removing them from state', async () =>{
     const wrapper = mount(<App/>)
-    const peopleTab = wrapper.find('#people-button')
+    const peopleTab = wrapper.find('.people-button')
     const cardList = wrapper.find('.card-container');
 
     peopleTab.simulate('click')
@@ -324,9 +324,9 @@ describe('APP TEST - ON FAVORITE CLICK - PAGE', () => {
 
     it('should render only cards in favorites', async () =>{
       const wrapper = mount(<App/>)
-      const peopleTab = wrapper.find('#people-button')
+      const peopleTab = wrapper.find('.people-button')
       const cardList = wrapper.find('.card-container');
-      const showFavorites = wrapper.find('#favorite-button')
+      const showFavorites = wrapper.find('.favorites-button')
 
       peopleTab.simulate('click')
       await resolveAfter2Seconds()
@@ -349,7 +349,7 @@ describe('APP TEST - ON FAVORITE CLICK - PAGE', () => {
 
   it('should cause state to update', () =>{
     const wrapper = mount(<App/>)
-    const showFavorites = wrapper.find('#favorite-button')
+    const showFavorites = wrapper.find('.favorites-button')
 
     showFavorites.simulate('click')
 

@@ -57,7 +57,6 @@ export default class Sidebar extends Component {
   render() {
     return (
       <aside className='side-bar'>
-        <h1 className='title'>SWAPI-BOX</h1>
         <div className='scroll'>{this.scrollingText()}</div>
       </aside>
     )

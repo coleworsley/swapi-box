@@ -5,7 +5,7 @@ import { shallow, mount } from 'enzyme'
 describe('NAV - ALL', () => {
 
   it('should contain 4 buttons', () =>{
-    const wrapper = shallow(<Nav/>)
+    const wrapper = shallow(<Nav activeCard=''/>)
 
     const buttons = wrapper.find('button')
 
@@ -14,9 +14,9 @@ describe('NAV - ALL', () => {
 
   it('should fire an onclick function when any of the 4 buttons are clicked', () =>{
     const getData = jest.fn()
-    const wrapper = shallow(<Nav getData={getData}/>)
+    const wrapper = shallow(<Nav getData={getData} activeCard=''/>)
 
-    const button = wrapper.find('#favorite-button')
+    const button = wrapper.find('.favorites-button')
 
     button.simulate('click')
     button.simulate('click')

@@ -6,11 +6,12 @@ export default class PeopleFetch {
   }
 
   getPeople(component) {
+    component.setState({ loading: true, active: 'people' })
     fetch(this.url)
       .then(response => response.json())
       .then(people => this.getNestedData(people))
       .then(people => {
-        component.setState({ people, active: "people" })
+        component.setState({ people, loading: false })
         localStorage.setItem('people', JSON.stringify(people))
       })
   }
