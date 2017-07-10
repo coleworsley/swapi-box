@@ -2,7 +2,8 @@ import React from 'react';
 import Card from '../Card/Card';
 import './CardContainer.css';
 
-const CardContainer = ({ cardData, toggleFavorite, favoritesArray, active }) => {
+const CardContainer = ({ cardData, toggleFavorite, favoritesArray, active, loading }) => {
+  console.log(cardData);
   const cards = cardData.length > 0 ? cardData.map(e => {
     return <Card data={e}
             key={e.name}
@@ -11,7 +12,7 @@ const CardContainer = ({ cardData, toggleFavorite, favoritesArray, active }) => 
   }) : null;
 
   return (
-    <section className='card-container'>
+    <section className={`card-container ${loading ? 'loading' : ''}`}>
       {cards}
     </section>
   )

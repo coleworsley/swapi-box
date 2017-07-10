@@ -24,6 +24,7 @@
   text-align: center;
 }
 
+tbody td,
 .card-info {
   color: rgb(175, 175, 175);
   border-bottom: 1px solid rgb(175, 175, 175);
@@ -31,8 +32,13 @@
   text-transform: capitalize;
 }
 
+tbody td {
+  width: 100%;
+}
+
+thead td,
 .card-info .subject {
-  color: rgb(75, 213, 238);
+  color: #4bd5ee;
 }
 
 .card-favorite-button {

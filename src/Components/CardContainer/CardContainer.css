@@ -11,3 +11,11 @@
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
   overflow-y: scroll;
 }
+
+.loading {
+  background-image: url('../../assets/Spinner.gif');
+  background-position: center;
+  background-size: 50px;
+  background-repeat: no-repeat;
+
+}

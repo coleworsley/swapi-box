@@ -2,18 +2,18 @@ import React from 'react';
 import './Card.css';
 
 const Card = ({ data, toggleFavorite, favorite }) => {
-  const keys = Object.keys(data);  
+  const keys = Object.keys(data);
   const residentTable = (elem, i) => {
     return (
       <table className='residents' key={elem.name + 'table' + i}>
         <thead>
           <tr key={elem.name + 'tr1' + i}>
-            <td>Residents</td>
+            <td>Residents:</td>
           </tr>
         </thead>
         <tbody>
         {
-          data[elem].map((item, j )=> {
+          data[elem].map((item, j) => {
             return (
               <tr key={item + 'tr2' +j}>
                 <td>
