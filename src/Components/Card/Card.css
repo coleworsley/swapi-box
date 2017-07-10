@@ -63,3 +63,10 @@ thead td,
 .favorite .card-favorite-button:hover {
   background-color: rgb(139, 37, 37);
 }
+
+
+@media screen and (max-width: 800px) {
+ .card {
+   width: 90%;
+ }
+}
