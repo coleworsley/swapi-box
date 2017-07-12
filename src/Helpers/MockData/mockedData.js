@@ -9,7 +9,8 @@ export const mockedCrawl = {
   ]
 }
 
-export const mockedPeople = {"results": [
+export const mockedPeople = {
+  "results": [
         {
             "name": "Luke Skywalker",
             "homeworld": "http://swapi.co/api/planets/1/",
